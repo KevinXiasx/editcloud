@@ -1,0 +1,3 @@
+var out = 'hello'
+
+console.log(out);
