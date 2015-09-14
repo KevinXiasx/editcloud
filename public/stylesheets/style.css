@@ -1,9 +1,17 @@
 body{
 	width: 100%;
 }
+
+.warning{
+	position: absolute;
+	height: 50px;
+	width: 200px;
+	background-color: red;
+	left: 50%;
+}
 #page{
 	width: 100%;
-	height: 850px;
+	height: 841px;
 	background-color: #FFFFFF;
 }
 
@@ -14,16 +22,41 @@ body{
 	font-size: 20px;
 	height: 100%;
 	float: left;
-	margin: 5px;
-	box-shadow: 0px 0px 10px; black;
+	margin: 2px;
+	box-shadow: 0px 0px 5px black;
+	overflow: hidden;
+    overflow-y:auto; 
+    overflow-x:auto;
+}
+
+.timersave{
+	font-size: 30px;
+	margin: 3px 0 0 0;
+	display: inline-block;
+	-moz-user-select:none;
+	-webkit-user-select:none;
+	cursor: default;
+}
+.timervalue{
+	width: 60px;
+	display: inline-block;
+	text-align: center;
+}
+.timeradd, .timerdel{
+	display: inline-block;
+	text-align: center;
+	width: 30px;
+}
+.timeradd:hover , .timerdel:hover{
+	background: #ccc;
 }
 
 #editarea{
 	width: 80%;
 	height: 100%;
 	float: left;
-	margin: 5px;
-	box-shadow: 0px 0px 10px black;
+	margin: 2px;
+	box-shadow: 0px 0px 5px black;
 }
 
 #filelabel{
@@ -33,16 +66,28 @@ body{
 	background-color: #EBEBA0;
 	padding-left: 50px;
 }
-#edit{
-	width: 100%;
-	height: 96%;
-	font-size: 30px;
-}
+.editor{
+	width: 80%;
+	height: 807px;
+	font-size: 20px;
+	position: absolute;
+	opacity: 0;
+	display: none;
 
+}
+.editor.shown{
+	opacity: 1;
+	font-size: 20px;
+	display: block;
+}
 .dirlist{
-	font: 23px "Monaco","Menlo","Ubuntu Mono","Consolas","source-code-pro",monospace;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 20px;
 	color: #BA55D3;
 	margin-left: 30px;
+	padding-left: 0px;
+	-moz-user-select:none;
+	border-left: 1px solid #ccc;
 }
 
 .files{
@@ -55,7 +100,7 @@ body{
 	color: black;
 	font-weight: bold;
 }
-.shown.mybtn{
+.mybtn.shown{
 	background-color: #F08080;
 }
 .mybtn{
@@ -67,4 +112,39 @@ body{
 	border:none;
 	box-shadow: 0px 2px 5px black;
 	font-size: 20px;
+	float: left;
+	background-color: #FFFFFF;
+	cursor:default;
+	-moz-user-select:none;
+	overflow: hidden;
+	white-space:nowrap;
+}
+
+.mybtnname{
+	display: inline-block;
+	text-align: center;
+}
+
+.closelabel{
+	float: left;
+	border-radius: 20px;
+	margin-left: 10px;
+	vertical-align: middle;
+	display: inline-block;
+	width:30px;
+	height: 30px;
+	margin-top: 2px;
+	padding-top: 0px;
+	font-weight: bold;
+	color: #7A7A7A;
+}
+
+.closelabel:hover{
+	color: red;
+	font-size: 21px;
+}
+
+.projectloader.shown{
+	font-weight: bold;
+	font-style: italic;
 }

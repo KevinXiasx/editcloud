@@ -436,10 +436,15 @@
     });
 
     $('#content').hover(
-        function () {$(window.document).keypress(xpress);
-                     $(window.document).keyup(xkeyup);
-                     $(window.document).keydown(xkeydown);},
-        function () {$(window.document).unbind('keypress',xpress);
+        function () {
+        if( $('#content').hasClass('shown') )
+        {
+             $(window.document).keypress(xpress);
+             $(window.document).keyup(xkeyup);
+             $(window.document).keydown(xkeydown);
+        }
+                 },
+        function (e) {$(window.document).unbind('keypress',xpress);
                      $(window.document).unbind('keyup',xkeyup);
                      $(window.document).unbind('keydown',xkeydown);}
         );
@@ -491,6 +496,52 @@
             uiLineCnt.append(letter);
             cursorPos++;
         }
+    }
+
+
+    var terminaltop = 770;
+    var mousecurreny;
+    
+    window.onscroll = function(){
+        terminaltop = 770-document.documentElement.scrollTop+document.body.scrollTop;
+        return true;
+    }
+
+    $('#content').on('mousemove', mousecursorfunc);
+    $('#content').on('mousedown', mousedownfunc);
+    $('#content').on('mouseup', mouseupfunc);
+
+    function mousecursorfunc(e) {
+        if( $('#content').hasClass('shown') )
+        {
+            if(e.clientY > terminaltop && e.clientY < terminaltop+10)
+                $(this).css('cursor','crosshair');
+            else
+                $(this).css('cursor','default');
+        }
+    };
+
+    function mousedownfunc (e) {
+        if(e.clientY > terminaltop && e.clientY < terminaltop+10)
+        {
+            $(window.document).on('mousemove', tmlmovefunc);
+            mousecurreny = e.clientY;
+        }
+    }
+
+    function tmlmovefunc (e) {
+        var currentop = $('#content').css('margin-top');
+        var currenheiht = $('#content').css('height');
+        terminaltop = terminaltop + e.clientY - mousecurreny;
+        var distence = parseInt(currentop) + e.clientY - mousecurreny;
+        var heightdis = parseInt(currenheiht) - (e.clientY - mousecurreny);
+        mousecurreny = e.clientY;
+        $('#content').css('margin-top', distence);
+        $('#content').css('height', heightdis);
+    }
+
+    function mouseupfunc (e) {
+        $(window.document).unbind('mousemove', tmlmovefunc);
     }
 
     $(window).unload(function () {

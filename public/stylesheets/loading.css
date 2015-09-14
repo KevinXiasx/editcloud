@@ -1,0 +1,73 @@
+.loding-animation{
+	width: 80%;
+	height: 807px;
+	align-items:center;
+	justify-content:center;
+	box-sizing:border-box;
+/*	border: 1px red solid;*/
+	display: flex;
+	text-align: center;
+	vertical-align: middle;
+	position: absolute;
+}
+
+@-webkit-keyframes sss{
+	0%{
+		transform:rotate(0deg) scale(1);
+	}
+	50%{
+		transform:rotate(180deg) scale(0.6);
+	}
+	100%{
+		transform:rotate(360deg) scale(1);
+	}
+}
+
+@-moz-keyframes aaa{
+	0%{
+		transform:rotate(0deg) scale(1);
+	}
+	50%{
+		transform:rotate(180deg) scale(0.6);
+	}
+	100%{
+		transform:rotate(360deg) scale(1);
+	}			
+}
+
+.animationer{
+	width: 40px;
+	height: 40px;
+	position: relative;
+}
+
+
+.aniamtioner p{
+	color: red;
+	opacity: 1;
+
+}
+
+.animationer i{
+	display: block;
+	border:2px solid #ccc;
+	position: absolute;
+	border-radius: 50%;
+	border-color: transparent #333;
+}
+.animationer i:first-child{
+	width: 35px;
+	height: 35px;
+	top: 0px;
+	left: 0px;
+	-webkit-animation: sss 1s linear 0s infinite;
+	-moz-animation: aaa 1s linear 0s infinite;
+}
+.animationer i:last-child{
+	width: 15px;
+	height: 15px;
+	top: 10px;
+	left: 10px;
+	-webkit-animation: sss 1s linear 0.5s infinite;
+	-moz-animation: aaa 1s linear 0.5s infinite;
+}

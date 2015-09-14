@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/css/bootstrap.min.css">
+	<script type="text/javascript" src="/javascripts/jquery-1.11.2.js"></script>
+	<script type="text/javascript" src="jq-mousewheel.js"></script>
+	<script type="text/javascript" src="jq-transition.js"></script>
+	<link rel="stylesheet" type="text/css" href="September-14th.css">
+</head>
+<body>
+	<div class="leftframe"></div>
+	<div class="centerframe">
+
+		<div class="topframe">
+<!-- 			<div class="widget-group">
+				<div class="widget" id="">
+					<span class="glyphicon glyphicon-align-left"></span>
+				</div>
+			</div> -->
+			<div class="alink-group navbar-fixed-top">
+				<div class="logo"><span>LOGO</span></div>
+				<div class="btns">
+					<div class="btnx"><span>Wiki</span></div>
+					<div class="btnx"><span>Store</span></div>
+					<div class="btnx"><span>Community</span></div>
+				</div>
+			</div>
+
+			<div class="maintitle">
+				<span>XXXXX</span>
+				<span>xxxx  xxxxx xxx xxxx xxx xx</span>
+			</div>
+		</div>
+		<div class="pageframe">
+			<section class="page" id="page-1">
+				
+				<div class="imgs">
+					
+				</div>
+				<div class="text" id="text1">
+					
+				</div>
+				<div class="text square-outline" id="text2">
+					<span class="anima-line top-line"></span>
+					<span class="anima-line right-line"></span>
+					<span class="anima-line bottom-line"></span>
+					<span class="anima-line left-line"></span>				
+				</div>
+			</section>
+			<section class="page" id="page-2">
+				<div class="imgs">
+
+				</div>
+				<div class="text" id="text1">
+					
+				</div>
+				<div class="text" id="text2">
+				</div>				
+			</section>
+		
+<!--		
+ 			<section class="page" id="page-3">
+				<div class="imgs">
+					
+				</div>
+				<div class="text" id="text1">
+					
+				</div>
+				<div class="text square-outline" id="text2">
+				</div>				
+			</section>	-->
+			<section class="page formpage" id="page-4">
+				<div class="formbox">
+					<div class="row">
+						<div class="col-md-4 col-md-offset-4"><span>Tell us your idea</span></div>
+					</div>
+					<div class="row">
+						<div class="col-md-4"><span>.col-md-4</span></div>
+						<div class="col-md-4"><span>.col-md-4</span></div>
+						<div class="col-md-4"><span>.col-md-4</span></div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 col-md-offset-3"><span>.col-md-4</span></div>
+						<div class="col-md-4 "><span>.col-md-4</span></div>
+
+					</div>
+					<div class="row">
+						<div class="col-md-4 col-md-offset-1"><span>.col-md-4</span></div>
+						<div class="col-md-4"><span>.col-md-4</span></div>
+
+					</div>
+				</div>		
+			</section> 
+		</div>
+
+		<div class="bottomframe">
+			<div>
+				<span>xxxx</span>
+				<span>xxxx</span>
+			</div>
+			<div>
+				<span>xxxx</span>
+				<span>xxxx</span>
+			</div>
+			<div>
+				<span>xxxx</span>
+				<span>xxxx</span>
+			</div>
+		</div>
+	</div>
+	<div class="rightframe"></div>
+
+	<script type="text/javascript">
+	
+	$(document).ready(function () {
+		$('.page').each(function () {
+			var eleHight = parseInt($(this).offset().top);
+			var ele = $(this);
+			$(document).scroll(function () {
+				var scrollHight = document.documentElement.scrollTop+document.body.scrollTop;
+				var winHeight;
+				if (window.innerHeight)
+					winHeight = window.innerHeight;
+				else if ((document.body) && (document.body.clientHeight))
+					winHeight = document.body.clientHeight;
+
+				var currenHight = scrollHight+ winHeight;
+
+				if( eleHight+200 < currenHight)
+					ele.transition({scale: 1,y:0, opacity: 1},1000);
+
+				if( eleHight < currenHight && eleHight+1600 > currenHight)
+				{
+					console.log(currenHight - eleHight);
+					var dis = parseInt((800 - (currenHight - eleHight))/9);
+					ele.children('.imgs').css('transform', 'translateY('+dis+'px)');
+				}
+			});
+			$(this).transition({scale: 0.9,y:100, },0);
+		})
+	});
+
+/*	$(document).ready(function () {
+		var baseY = 0;
+		$(document).scroll(function (){
+			var scrollHight = document.documentElement.scrollTop+document.body.scrollTop;	
+			$('.imgs').each(function () {
+				baseY++;
+				console.log(baseY)
+				$(this).css('transform', 'translateY('+baseY+'px)');
+			})
+		})
+	});*/
+	</script>
+</body>
+</html>

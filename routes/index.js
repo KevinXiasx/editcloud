@@ -15,9 +15,12 @@ router.post('/loadtree', loadtree_func);
 
 
 function save_func(req, res, next) {
+
   fs.writeFile(req.body.filename, req.body.code, function (err) {
+    console.log("saveover "+req.body.filename);
     if(err)
       console.log(err);
+    res.send({'result':'success'});
   });
 }
 
@@ -34,16 +37,18 @@ function loadfile_func(req, res, next)
 
 function index_func(req, res, next) 
 {
-  res.render('index');
+  fs.readFile('./project.json', function (err, data) {
+    res.render('index', {'projectjson':JSON.parse(data)});
+  });
+  //res.render('index');
 }
 
+var s = 0;
 function loadtree_func(req, res, next) 
 {
-  var tmptree = tree.getdir('files');
+  console.log(s++);
+  var tmptree = tree.getdir(req.body.path);
   res.send(tmptree);
 }
-
-
-
 
 module.exports = router;
