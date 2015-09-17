@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Canvas-first</title>
+	<script type="text/javascript" src="/javascripts/easeljs-0.8.1.min.js"></script>
+</head>
+<body>
+	<canvas id="cav" height="500px" width="500px"></canvas>
+
+	<script type="text/javascript">
+	function draw (id) {
+		var canvas = document.getElementById(id);
+		var context = canvas.getContext("2d");
+		var g1 = context.createLinearGradient(0, 0, 0, 300);
+		g1.addColorStop(0, '#FFF');
+		g1.addColorStop(0.5, '#000');
+		context.fillStyle = g1;
+		context.fillRect(0, 0, 500, 500);
+	}
+	draw('cav');
+	</script>
+</body>
+</html>
