@@ -1,8 +1,4 @@
-@font-face {
-	font-family: iconfont;
-	src: url('/fonts/glyphicons-halflings-regular.ttf')format("truetype");
-	font-weight: normal;
-}
+/* ========================= server font =================*/
 
 @font-face {
   font-family: Montserrat;
@@ -20,10 +16,8 @@
 	font-family: textfont2;
 	src:url("/fonts/hee.ttf") format("truetype");
 }
+/* ------------------------- server font -----------------*/
 
-<!--[if firefox]>
-
-<![endif]--> 
 body{
 	margin: 0px;
 	padding: 0px;
@@ -38,6 +32,8 @@ div, section{
 	height: 0;
 	float: left;
 }
+
+/* ========================= rihght frame =================*/
 .rightframe{
 	height: 900px;
 	width: 5%;
@@ -63,6 +59,39 @@ div, section{
 		transform:rotate(360deg);
 	}
 }
+@-moz-keyframes circleani{
+	0%{
+		transform:rotate(0deg);
+	}
+	50%{
+		transform:rotate(180deg);
+	}
+	100%{
+		transform:rotate(360deg);
+	}
+}
+@-o-keyframes circleani{
+	0%{
+		transform:rotate(0deg);
+	}
+	50%{
+		transform:rotate(180deg);
+	}
+	100%{
+		transform:rotate(360deg);
+	}
+}
+@keyframes circleani{
+	0%{
+		transform:rotate(0deg);
+	}
+	50%{
+		transform:rotate(180deg);
+	}
+	100%{
+		transform:rotate(360deg);
+	}
+}
 
 .rightframe > span{
 	cursor: pointer;
@@ -75,7 +104,15 @@ div, section{
 
 .rightframe > span:hover i{
 	-webkit-animation: circleani 1s linear 0s infinite;
+	animation: circleani 1s linear 0s infinite;
+	-moz-animation: circleani 1s linear 0s infinite;
+	-o-animation: circleani 1s linear 0s infinite;
+
 }
+
+/* ------------------------- rihght frame -----------------*/
+
+
 
 .centerframe{
 	width: 100%;
@@ -83,113 +120,32 @@ div, section{
 	position: relative;
 }
 
+
+/* ========================= top frame =================*/
+
+.topframe ,.alink-group , .alink-group .logo ,.alink-group .btnx ,.maintitle{
+	display: flex;
+}
+
 .topframe{
 	width: 100%;
 	background-color:#101010;
 	height:992px;
-	display: flex;
 	font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
 	position: relative;
 }
 
 .topframe #bgimg{
-	background-image: url("/homepage/3.png");
+	background-image: url("/images/homepage/3.png");
 	opacity: 0.1;
 	width: 100%;
 	height: 100%;
-/*	background-size: 100% 100%;*/
 	background-size: cover;
 	position: absolute;
-}
-
-.maintitle{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: flex-end;
-	position: relative;
-	opacity: 0;
-	border-right:6px solid #ccc;
-	left: 40%;
-	top: 25%;
-	width: 50%;
-	color: white;
-	height: 50%;
-}
-.maintitle span{
-	text-align: right;
-	display: block;
-	margin:60px;
-}
-.maintitle span:nth-child(1){
-	font-size:96px;
-	text-transform: uppercase;
-}
-.maintitle span:nth-child(2){
-	font-size:48px;
-}
-
-.topframe .imgs{
-	height: 60%;
-	width: 40%;
-	background: url('/images/rock_pro.jpg');
-	background-size: cover;
-	opacity: 0;
-}
-
-@-webkit-keyframes downdir{
-	0%{
-		opacity: 1;
-		transform: scale(1);
-	}
-	50%{
-		opacity: 0.7;
-		transform: scale(0.7);
-	}
-	100%{
-		opacity: 1;
-		transform: scale(1);
-	}
-}
-
-.updir , .downdir{
-	font-size:72px;
-	left: 48%;
-	position: absolute;
-	z-index: 10;
-	opacity: 0.15;
-}
-
-.downdir{
-	top: 85%;
-}
-
-.nextpage , .prepage{
-	cursor: pointer;
-	-webkit-animation: downdir 3s linear 0s infinite;
-}
-
-.page{
-	width: 100%;
-	height: 900px;
-	position: relative;
-	opacity: 0;
-	overflow: hidden;
-}
-
-.widget-group{
-	margin-top:12px;
-	display: flex;
-	justify-content: space-between;
-}
-.widget span{
-	color: #ccc;
-	font-size:24px;
 }
 .alink-group{
 	height:96px;
 	width: 100%;
-	display: flex;
 	justify-content: center;
 	align-items: flex-end;
 	background-color: #2C3E50;
@@ -198,7 +154,6 @@ div, section{
 }
 .alink-group .logo{
 	height: 100%;
-	display: flex;
 	justify-content: center;
 	align-items: center;
 	font-size:60px;
@@ -238,10 +193,9 @@ div, section{
 .btnx:hover span{
 	color: #00CD66;
 }
-.btnx{
+.alink-group .btnx{
 	height: 50%;
 	padding:12px;
-	display: flex;
 	justify-content: center;
 	align-items: center;
 	float: left;
@@ -249,35 +203,49 @@ div, section{
 	position: relative;
 }
 
-.bottomframe{
-	height:160px;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: #2C3E50;;	
-}
-
-.bottomframe div{
-	height: 100%;
-	width: 20%;
-	float: left;
-	display: flex;
+.maintitle{
 	flex-direction: column;
 	justify-content: center;
-	align-items: flex-start;
+	align-items: flex-end;
+	position: relative;
+	opacity: 0;
+	border-right:6px solid #ccc;
+	left: 40%;
+	top: 25%;
+	width: 50%;
 	color: white;
-	font-size:15px;
+	height: 50%;
 }
-.page .imgs,.page .text{
+.maintitle span{
+	text-align: right;
+	display: block;
+	margin:60px;
+}
+.maintitle span:nth-child(1){
+	font-size:96px;
+	text-transform: uppercase;
+}
+.maintitle span:nth-child(2){
+	font-size:48px;
+}
+/* ------------------------- top frame -----------------*/
+
+
+
+.page{
+	width: 100%;
+	height: 900px;
+	position: relative;
+	opacity: 0;
+	overflow: hidden;
+}
+
+
+.page .imgs, .page .text{
 	position: absolute;
 }
 
-#page-1{
-	background-color: #1BBC9B;
-}
-
-/* ----------------------s-------page-2 -----------------------*/
+/* -----------------------------page-2 -----------------------*/
 #page-2 .imgs{
 	height:480px;
 	width:840px;
@@ -285,6 +253,7 @@ div, section{
 	top:180px;
 	background: url('/images/Radxa_maker_faire_2015.jpg');
 	background-size: cover;
+	opacity: 0;
 }
 
 #page-2 #text1{
@@ -298,13 +267,14 @@ div, section{
 	align-items: flex-end;
 	font-family: Montserrat;
 	font-size:50px;
+	opacity: 0;
 }
 #page-2  #text2{
 	height:100px;
 	width:500px;
 	left:1300px;
 	top:420px;
-	opacity: 0.7;
+	opacity: 0;
 }
 
 #page-2  #text3{
@@ -312,6 +282,7 @@ div, section{
 	width:492px;
 	left:1100px;
 	top:550px;
+	opacity: 0;
 }
 
 #page-2 .shadow-box{
@@ -426,81 +397,202 @@ div, section{
 	height: 20px;
 }
 
-#page-3 .imgwall{
-	height: 50%;
-	width: 80%;
-	top: 30%;
+#page-3 .img{
+	position: absolute;
+	height: 300px;
+	width: 300px;
+	opacity: 0;
+}
+
+#page-3  #partner-1{
 	left: 10%;
+	top: 20%;
+	background:url("/images/partner/hvpd.jpg") no-repeat center center;
 }
 
-#page-3 .imgwall div{
-	border: 1px solid #ccc;
+#page-3  #partner-2{
+	left: 25%;
+	top: 35%;
+	background:url("/images/partner/hitech.png") no-repeat center center;
+}
+
+#page-3  #partner-3{
+	left: 42%;
+	top: 42%;
+	background:url("/images/partner/mozilla.jpg") no-repeat center center;
+}
+
+#page-3  #partner-4{
+	left: 59%;
+	top: 35%;
+	background:url("/images/partner/spectek_logo.gif") no-repeat center center;
+}
+#page-3  #partner-5{
+	left: 74%;
+	top: 20%;
+	background:url("/images/partner/kddi.jpg") no-repeat center center;
 }
 
 
-
-
+/* -----------------------------formpage-----------------------*/
 .formpage{
 	height:720px;
 }
 
 .formpage .formbox{
 	top: 10%;
-	left: 15%;
-	width: 70%;
+	left: 25%;
+	width: 50%;
 	height: 80%;
 	padding: 0 15px;
 	position: relative;
 }
 
 .formpage .row{
-	height: 25%;
+	height: 12%;
+	border-bottom: 1px dashed #BFEFFF;
+	font-size: 25px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-end;
 }
-.square{
+
+.formpage .lastrow{
+	border-bottom: none;
+}
+#submit .btn{
+	height:60px;
+	font-size:30px;
+	margin-top: 20px;
+}
+
+.formpage .square{
 	height: 100%;
 	display: flex;
 	justify-content: flex-start;
-	align-items: flex-start;
-}
-
-.formtitle span{
-	font-size:60px;
-
-}
-.formpage .square i{
-	font-size:36px;
-}
-
-.formpage .square span{
-	font-family:iconfont;
-	font-size:36px;
+	align-items: flex-end;
 }
 
 .formpage .square input{
 	border: none;
-	outline:none;
-	font-size:36px;
-	color: #ccc;
+	outline: none;
+	border-bottom: 1px solid #AAAAAA;
+	font-size:30px;
+	color: #E0E0EE;
+	margin-left: 10px;
+	margin-right: 10px;
+	text-align: center;
+}
+.formpage .square input:focus{
+	color: blue;
+	font-style: italic;
+	font-family: Montserrat;
 }
 
-.formpage .square .input{
-	border-bottom:2px solid #ccc;
-	height:46px;
-	width :50%;
-	padding-left:12px;
+/* ----------------------------- bottomframe -----------------------*/
+
+.bottomframe{
+	height:160px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #2C3E50;;	
 }
 
-#submit .btn{
-	height:60px;
-	font-size:36px;
+.bottomframe div{
+	height: 100%;
+	width: 20%;
+	float: left;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	color: white;
+	font-size:15px;
 }
-/*.formpage .col-md-4 input:focus {
- 	border: none;
+
+
+
+/* ========================= direvtion icon =================*/
+@-webkit-keyframes downdir{
+	0%{
+		opacity: 1;
+		transform: scale(1);
+	}
+	50%{
+		opacity: 0.7;
+		transform: scale(0.7);
+	}
+	100%{
+		opacity: 1;
+		transform: scale(1);
+	}
 }
-*/
+@-moz-keyframes downdir{
+	0%{
+		opacity: 1;
+		transform: scale(1);
+	}
+	50%{
+		opacity: 0.7;
+		transform: scale(0.7);
+	}
+	100%{
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+@-o-keyframes downdir{
+	0%{
+		opacity: 1;
+		transform: scale(1);
+	}
+	50%{
+		opacity: 0.7;
+		transform: scale(0.7);
+	}
+	100%{
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+@keyframes downdir{
+	0%{
+		opacity: 1;
+		transform: scale(1);
+	}
+	50%{
+		opacity: 0.7;
+		transform: scale(0.7);
+	}
+	100%{
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+.updir , .downdir{
+	font-size:72px;
+	left: 48%;
+	position: absolute;
+	z-index: 10;
+	opacity: 0.15;
+}
+
+.downdir{
+	top: 85%;
+}
+
+.nextpage , .prepage{
+	cursor: pointer;
+	-webkit-animation: downdir 3s linear 0s infinite;
+	-moz-animation: downdir 3s linear 0s infinite;
+	-o-animation: downdir 3s linear 0s infinite;
+	animation: downdir 3s linear 0s infinite;
+}
 
 
-
+/* -----------------------------deriction icon-----------------------*/
 
 
 
@@ -537,7 +629,7 @@ div, section{
 .square-outline .right-line{
 	height: 0px;
 	width:2px;
-	left: 100%;/* 100-width*/
+	left: 100%;
 	top: 0px;
 	background-color: black;
 	transition: height 0.2s ease-out 0.1s;
@@ -595,7 +687,6 @@ div, section{
 .imgborder .top-line{
 	height:3px;
 	width: 0;
-	box-shadow-bottom: 0px 0px 5px black;
 }
 
 .imgborder .right-line{
