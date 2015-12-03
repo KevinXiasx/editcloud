@@ -3,6 +3,7 @@ var fs = require('fs');
 var url = require("url");
 var router = express.Router();
 var tree = require('../tools/tree.js');
+var path = require('path');
 
 
 /* GET method. */
@@ -15,9 +16,7 @@ router.post('/loadtree', loadtree_func);
 
 
 function save_func(req, res, next) {
-
   fs.writeFile(req.body.filename, req.body.code, function (err) {
-    console.log("saveover "+req.body.filename);
     if(err)
       console.log(err);
     res.send({'result':'success'});
@@ -40,15 +39,13 @@ function index_func(req, res, next)
   fs.readFile('./project.json', function (err, data) {
     res.render('index', {'projectjson':JSON.parse(data)});
   });
-  //res.render('index');
 }
 
-var s = 0;
-function loadtree_func(req, res, next) 
+function loadtree_func(req, res, next)
 {
-  console.log(s++);
-  var tmptree = tree.getdir(req.body.path);
-  res.send(tmptree);
+  tree.readpath( path.isAbsolute(req.body.path)?req.body.path:(path.join(__dirname, '..', req.body.path)), function (data) {
+    res.send(data);
+  })
 }
 
 module.exports = router;

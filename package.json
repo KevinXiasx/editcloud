@@ -5,105 +5,15 @@
   "scripts": {
     "start": "node ./bin/www"
   },
-  "contributors": [
-    {
-      "name": "Boyan Rabchev",
-      "email": "boyan@rabchev.com"
-    }
-  ],
-  "config": {
-    "port": "8088",
-    "root": "/terminal",
-    "requireSSL": "false",
-    "key": "",
-    "cert": "",
-    "pfx": ""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rabchev/web-terminal.git"
-  },
-  "main": "index",
-  "preferGlobal": "false",
   "dependencies": {
-    "send": "*",
-    "connect": "*",
-    "socket.io": "*",
-    "express":"*",
-    "serve-favicon":"*",
-    "commander": "*",
-    "lodash": "*",
-    "authenticate-pam": "*",
-    "uid-number": "*",
     "body-parser": "~1.13.2",
     "cookie-parser": "~1.3.5",
     "debug": "~2.2.0",
     "express": "~4.13.1",
     "jade": "*",
     "morgan": "~1.6.1",
-    "serve-favicon": "~2.3.0"
-  },
-  "devDependencies": {
-    "nodeunit": "*"
-  },
-  "optionalDependencies": {
-    "authenticate-pam": "*",
-    "uid-number": "*"
-  },
-  "keywords": [
-    "command",
-    "shell",
-    "command-line",
-    "text",
-    "terminal",
-    "browser",
-    "web",
-    "node",
-    "TTY",
-    "JavaScript",
-    "REPL"
-  ],
-  "bin": {
-    "web-terminal": "./bin/run.js"
-  },
-  "scripts": {
-    "start": "node ./bin/run.js",
-    "test": "node test"
-  },
-  "bugs": {
-    "url": "https://github.com/rabchev/web-terminal/issues",
-    "email": "boyan@rabchev.com"
-  },
-  "license": {
-    "type": "MIT",
-    "url": "http://github.com/rabchev/web-terminal/blob/master/LICENSE"
-  },
-  "engines": {
-    "node": ">=0.10"
-  },
-  "gitHead": "82eb0e5c0d5131c2e0214fe22ca185a584e82d3a",
-  "homepage": "https://github.com/rabchev/web-terminal",
-  "_id": "web-terminal@0.7.0",
-  "_shasum": "a976633da64b542cdfc39ad1e1700563a67d6cc8",
-  "_from": "web-terminal@*",
-  "_npmVersion": "2.3.0",
-  "_nodeVersion": "0.10.25",
-  "_npmUser": {
-    "name": "rabchev",
-    "email": "boyan@rabchev.com"
-  },
-  "maintainers": [
-    {
-      "name": "rabchev",
-      "email": "boyan@rabchev.com"
-    }
-  ],
-  "dist": {
-    "shasum": "a976633da64b542cdfc39ad1e1700563a67d6cc8",
-    "tarball": "http://registry.npmjs.org/web-terminal/-/web-terminal-0.7.0.tgz"
-  },
-  "directories": {},
-  "_resolved": "https://registry.npmjs.org/web-terminal/-/web-terminal-0.7.0.tgz",
-  "readme": "ERROR: No README data found!"
+    "pty.js": "^0.3.0",
+    "serve-favicon": "~2.3.0",
+    "term.js": "0.0.7"
+  }
 }
-

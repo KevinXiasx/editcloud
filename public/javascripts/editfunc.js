@@ -38,18 +38,18 @@ function removeproject () {
 }
 
 function addson (mather, sons) {
-	for (var k = sons.file.length - 1; k >= 0; k--) 
+	for (var k = sons.files.length - 1; k >= 0; k--) 
 	{
-		mather.append('<div class="files" id="'+sons.self+'/'+sons.file[k]+'">'+sons.file[k]+'</div>');
+		mather.append('<div class="files" id="'+sons.self+'/'+sons.files[k]+'">'+sons.files[k]+'</div>');
 		mather.children().last().on('dblclick', fileclick);
 	};
-	for (var i = sons.dir.length - 1; i >= 0; i--)
+	for (var i = sons.dirs.length - 1; i >= 0; i--)
 	{
 		mather.append('<div class="dirlist"></div>');
 		var real = mather.children().last();
-		real.append('<div class="dirname" >'+'-'+sons.dir[i].self+'</div>');
+		var realname = sons.dirs[i].substr(sons.dirs[i].lastIndexOf('/')+1);
+		real.append('<div class="dirname" id="'+ sons.dirs[i] +'">'+'-'+realname+'</div>');
 		real.children().last().on('click', dirclick);
-		addson(real, sons.dir[i]);
 	};
 }
 
@@ -79,28 +79,33 @@ function fileclick () {
 		$('#filelabel').children().last().trigger('click');
 
 		if( sessionStorage.getItem( names ) && names != 'openproject') {
-			editor.setValue(sessionStorage.getItem( names )); 
+			editor.setValue(sessionStorage.getItem( names ));
 			editorlist[names].ace.clearSelection();				//------------------BUG------------------------
 			editor.getSession().on('change', editorchange);
 		}
 		else{
+			addloading( $('body') );
+			setText('loading '+ $(this).text());
+			alert('sdf');
 			$.ajax({
 				'url':'/loadfile',
 				'type' : 'get',
 				'data' : {filename: $(this).attr("id")},
 				'success' : function (data) {
-						editor.setValue(data); 
-						editorlist[names].ace.clearSelection();				//------------------BUG------------------------
+						editor.setValue(data);
+						editorlist[names].ace.clearSelection();			//------------------BUG------------------------
 						editor.getSession().on('change', editorchange);
 					},
 				'error' : function () {
 						alert('loading fail, network disconnect');
 						$('.mybtn.shown > .closelabel').trigger('click');
-					}
+					},
+				'complete' : function(){
+					removeloading();
+				}
 			});	
 		}
 	}
-
 	if($('.opened').length >= 6)
 		openlabelshow();
 }
@@ -117,6 +122,26 @@ function labelclick () {
 }
 
 function dirclick () {
+	if(!$(this).hasClass('loaded')){
+		$(this).addClass('loaded');
+		addloading($('body'));
+		var who = $(this);
+		$.ajax({
+			'url':'/loadtree',
+			'type' : 'post',
+			'data' : {path: $(this).attr('id')},
+			'success' : function (data) {
+					addson(who.parent('.dirlist'), data);
+				},
+			'error' : function () {
+					who.removeClass('loaded');
+				},
+			'complete':function () {
+				removeloading();
+			}
+		});	
+	}
+
 	if( $(this).hasClass('showdir') )
 	{
 		dirhide($(this));
@@ -162,7 +187,6 @@ function closebutton () {
 }
 
 function editinit () {
-
 	$('.dirlist').each(function () {
 		$(this).children().each(function () {
 			$(this).hide();
@@ -176,10 +200,8 @@ function editinit () {
 			if( $(this).attr('id') == m)
 				$(this).trigger('dblclick');
 		})
-		
 	};
 };
-
 
 function dirshow (dir) {
 	if(dir.hasClass('dirlist'))
@@ -213,11 +235,7 @@ function anothershow (who) {
 	var id = who.attr('id');
 
 	$('.files.shown').removeClass('shown');
-
 	$('.editor.shown').removeClass('shown');
-	//if( $('.editor.shown').hasClass('loading') )
-	//removeloading();
-
 	$('.mybtn.shown').removeClass('shown');
 
 	who.addClass('shown');
@@ -234,8 +252,6 @@ function anothershow (who) {
 				$(this).addClass('shown');
 		});
 		editorlist[id].ele.addClass('shown');
-/*		if(editorlist[id].ele.hasClass('loading'))
-			addloading(editorlist[id].ele.parent());*/
 	}
 }
 

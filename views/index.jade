@@ -2,20 +2,19 @@ doctype html
 html
   head
     title Radxa Editor
-    link(rel='stylesheet', type='text/css', href='/stylesheets/css/bootstrap.min.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/bootstrap/css/bootstrap.min.css')
     link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
-    link(rel='stylesheet', type='text/css', href='/stylesheets/main.css')
+    
     link(rel='shortcut icon' , href='/images/favicon.ico' type='image/x-icon')
     link(rel='stylesheet', type='text/css', href='/stylesheets/loading.css')
     script(type='text/javascript' src='/javascripts/ace-builds/src-noconflict/ace.js')
-    script(type='text/javascript' src='/javascripts/socket.io.js')
-    script(type='text/javascript' src='/javascripts/jquery-1.11.2.js')
-    script(type='text/javascript' src='/javascripts/js/bootstrap.min.js')
+    script(type='text/javascript' src='/javascripts/jquery/jquery-1.11.2.js')
+    script(type='text/javascript' src='/stylesheets/bootstrap/js/bootstrap.min.js')
     script(type='text/javascript' src='/javascripts/save.js')
     script(type='text/javascript' src='/javascripts/loading.js')
     script(type='text/javascript' src='/javascripts/viewinit.js')
   body
-    nav(class="navbar navbar-default " role="navigation")
+    nav(class="navbar navbar-default header" role="navigation")
       div.navbar-header
         button(type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1")
           span.sr-only Toggle navigation
@@ -35,12 +34,6 @@ html
                 - for( var m in projectjson)
                   li
                     a.projectloader(projpath="#{projectjson[m]}") #{m}
-
-        //
-          form.navbar-form.navbar-right(role="search")
-            div.form-group
-              input(type="text" class="form-control" placeholder="Search")
-            button(type="submit" class="btn btn-default") Submit
 
         div.navbar-right
           p.timersave
@@ -63,5 +56,7 @@ html
         button(type="button" class="btn btn-lg btn-info" id="tmbtn") Terminal
       
     script(type='text/javascript' src='/javascripts/editfunc.js')
-    script(type='text/javascript' src='/javascripts/init.js')
-    script(type='text/javascript' src='/javascripts/init-mobile.js')
+    script(type='text/javascript' src='/javascripts/socket.io.js')
+    script(type='text/javascript' src='/javascripts/term.js')
+    script(type='text/javascript' src='/javascripts/terminal.js')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/main.css')

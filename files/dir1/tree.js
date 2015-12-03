@@ -67,3 +67,8 @@ function getdir (filepath) {
 }
 
 console.log(getdir('..').dir);
+
+
+
+
+

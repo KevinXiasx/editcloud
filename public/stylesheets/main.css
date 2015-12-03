@@ -1,32 +1,17 @@
-.inverse {
-    background-color: #FFFFFF;
-    color: #290029;
-}
-
-#hidden-input {
-    opacity: 0;
-    width: 0px;
-    color: transparent;
-    outline: none;
-    left: -100px;
-    position: relative;
-}
-
 #content{
     cursor: text;
-    background-color: #111111;
+    background-color: #000;
     color: #FFFFFF;
     cursor: text;
     font-family: Lucida Console,CommPlus, MS LineDraw, Telix TT Terminal,monospace;
-    font-size: 16px;
-    height: 145px;
+    height: 29%;
     width: 98%;
     overflow-y:auto; 
     overflow-x:auto;
     border-radius: 5px;
     opacity: 0;
     position: absolute;
-    margin-top:700px;
+    margin-top:30%;
     margin-left:10px;
     z-index: 0;
     padding: 5px;

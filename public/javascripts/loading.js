@@ -7,3 +7,10 @@ function removeloading () {
 	$('.loding-animation').remove();
 }
 
+function setText (text) {
+	$('.loding-animation p').text(text);
+}
+
+function setstyle (style) {
+	$('.animationer').css(style);
+}

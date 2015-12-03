@@ -23,4 +23,40 @@ function getdir (filepath) {
 	return finalyjson;
 }
 
+
+
+function midden(filepath, finalyjson, total, callback) {
+	fs.stat(filepath, function (err, stats) {
+		if(err){
+			console.log(err);
+			return;
+		}
+		if( stats.isDirectory())
+			finalyjson.dirs.push( filepath );
+		if( stats.isFile() )
+			finalyjson.files.push( path.basename(filepath) );
+
+		if(finalyjson.dirs.length + finalyjson.files.length == total){
+			callback(finalyjson);
+		}
+	})
+}
+
+function readpath (filepath, callback) {
+	fs.readdir(filepath, function (err, date) {
+		if(err){
+			console.log(err);
+			return;
+		}
+		var finalyjson = { self:filepath, files:new Array(), dirs:new Array() };
+
+		if( !err && date.length != 0){
+			for (var i = date.length - 1; i >= 0; i--) {
+				midden( path.join(filepath, date[i]), finalyjson, date.length, callback);
+			};
+		}
+	});
+}
+
+exports.readpath = readpath;
 exports.getdir = getdir;
