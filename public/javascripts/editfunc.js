@@ -86,7 +86,6 @@ function fileclick () {
 		else{
 			addloading( $('body') );
 			setText('loading '+ $(this).text());
-			alert('sdf');
 			$.ajax({
 				'url':'/loadfile',
 				'type' : 'get',
